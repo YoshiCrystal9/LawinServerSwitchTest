@@ -72,7 +72,7 @@ express.get("/fortnite/api/cloudstorage/user/*/:file", async (req, res) => {
 
     res.set("Content-Type", "application/octet-stream")
 
-    if (req.params.file.toLowerCase() != "clientsettings.sav") {
+    if (req.params.file.toLowerCase() != "clientsettingsswitch.sav") {
         return res.status(404).json({
             "error": "file not found"
         });
@@ -118,8 +118,8 @@ express.get("/fortnite/api/cloudstorage/user/:accountId", async (req, res) => {
         const ParsedStats = fs.statSync(file);
 
         return res.json([{
-            "uniqueFilename": "ClientSettings.Sav",
-            "filename": "ClientSettings.Sav",
+            "uniqueFilename": "clientsettingsswitch.sav",
+            "filename": "clientsettingsswitch.sav",
             "hash": crypto.createHash('sha1').update(ParsedFile).digest('hex'),
             "hash256": crypto.createHash('sha256').update(ParsedFile).digest('hex'),
             "length": Buffer.byteLength(ParsedFile),
@@ -142,7 +142,7 @@ express.put("/fortnite/api/cloudstorage/user/*/:file", async (req, res) => {
         }
     } catch (err) {}
 
-    if (req.params.file.toLowerCase() != "clientsettings.sav") {
+    if (req.params.file.toLowerCase() != "clientsettingsswitch.sav") {
         return res.status(404).json({
             "error": "file not found"
         });
